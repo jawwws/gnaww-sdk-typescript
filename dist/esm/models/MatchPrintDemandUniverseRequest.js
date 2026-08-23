@@ -7,9 +7,6 @@
  * The version of the OpenAPI document: 0.1
  *
  *
- * NOTE: This class is auto Gnaww SDK.
- * https://gnaww-sdk.tech
- * Do not edit the class manually.
  */
 import { FulfilmentRequirementFromJSON, FulfilmentRequirementToJSON, } from './FulfilmentRequirement';
 import { PrintJobSpecificationV04FromJSON, PrintJobSpecificationV04ToJSON, } from './PrintJobSpecificationV04';

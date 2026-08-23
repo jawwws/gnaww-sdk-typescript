@@ -7,9 +7,6 @@
  * The version of the OpenAPI document: 0.1
  *
  *
- * NOTE: This class is auto Gnaww SDK.
- * https://gnaww-sdk.tech
- * Do not edit the class manually.
  */
 import { ApparelOptionsFromJSON, ApparelOptionsToJSON, } from './ApparelOptions';
 import { CommercialPrintOptionsFromJSON, CommercialPrintOptionsToJSON, } from './CommercialPrintOptions';

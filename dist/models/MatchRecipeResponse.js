@@ -8,9 +8,6 @@
  * The version of the OpenAPI document: 0.1
  *
  *
- * NOTE: This class is auto Gnaww SDK.
- * https://gnaww-sdk.tech
- * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MatchRecipeResponseStatusEnum = exports.MatchRecipeResponseSpecmatchPerformedEnum = exports.MatchRecipeResponseSchemaVersionEnum = exports.MatchRecipeResponseSchemaNameEnum = exports.MatchRecipeResponseProducerSelectionPerformedEnum = exports.MatchRecipeResponseProducerAcceptancePerformedEnum = exports.MatchRecipeResponsePersistencePerformedEnum = exports.MatchRecipeResponseOrderCreatedEnum = exports.MatchRecipeResponseLivePricingPerformedEnum = exports.MatchRecipeResponseDemandBasisEnum = exports.MatchRecipeResponseAvailabilityCheckedEnum = void 0;
