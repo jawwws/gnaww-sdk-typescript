@@ -1,0 +1,31 @@
+{
+  "name": "@jawwws/gnaww",
+  "version": "0.1.0",
+  "description": "Official TypeScript/JavaScript SDK for the Gnaww print intelligence API.",
+  "author": "Jawwws Ltd",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jawwws/gnaww-sdk-typescript.git"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "sideEffects": false,
+  "license": "MIT",
+  "homepage": "https://gnaww.io",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "gnaww",
+    "print",
+    "sdk",
+    "api"
+  ],
+  "files": [
+    "dist"
+  ]
+}
