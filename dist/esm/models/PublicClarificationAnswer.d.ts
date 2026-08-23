@@ -5,9 +5,6 @@
  * The version of the OpenAPI document: 0.1
  *
  *
- * NOTE: This class is auto Gnaww SDK.
- * https://gnaww-sdk.tech
- * Do not edit the class manually.
  */
 /**
  * One explicit buyer answer to a Gnaww-owned clarification.

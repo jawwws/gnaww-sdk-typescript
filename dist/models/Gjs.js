@@ -8,9 +8,6 @@
  * The version of the OpenAPI document: 0.1
  *
  *
- * NOTE: This class is auto Gnaww SDK.
- * https://gnaww-sdk.tech
- * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GjsStatusEnum = exports.GjsSchemaNameEnum = exports.GjsProductFamilyEnum = exports.GjsProductCategoryEnum = void 0;

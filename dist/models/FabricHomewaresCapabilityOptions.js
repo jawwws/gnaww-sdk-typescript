@@ -8,9 +8,6 @@
  * The version of the OpenAPI document: 0.1
  *
  *
- * NOTE: This class is auto Gnaww SDK.
- * https://gnaww-sdk.tech
- * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FabricHomewaresCapabilityOptionsPrintedSidesEnum = exports.FabricHomewaresCapabilityOptionsPrintMethodsEnum = exports.FabricHomewaresCapabilityOptionsLiningTypesEnum = exports.FabricHomewaresCapabilityOptionsHemStylesEnum = exports.FabricHomewaresCapabilityOptionsFasteningTypesEnum = exports.FabricHomewaresCapabilityOptionsColourProfilesEnum = void 0;
