@@ -16,7 +16,7 @@ exports.MaterialCapabilityFromJSON = MaterialCapabilityFromJSON;
 exports.MaterialCapabilityFromJSONTyped = MaterialCapabilityFromJSONTyped;
 exports.MaterialCapabilityToJSON = MaterialCapabilityToJSON;
 exports.MaterialCapabilityToJSONTyped = MaterialCapabilityToJSONTyped;
-const MaterialCompositionPart_1 = require("./MaterialCompositionPart");
+const AppModelsProducerMaterialCompositionPart_1 = require("./AppModelsProducerMaterialCompositionPart");
 /**
  * @export
  */
@@ -51,7 +51,7 @@ function MaterialCapabilityFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'category': json['category'] == null ? undefined : json['category'],
         'certifications': json['certifications'] == null ? undefined : json['certifications'],
-        'composition': json['composition'] == null ? undefined : (json['composition'].map(MaterialCompositionPart_1.MaterialCompositionPartFromJSON)),
+        'composition': json['composition'] == null ? undefined : (json['composition'].map(AppModelsProducerMaterialCompositionPart_1.AppModelsProducerMaterialCompositionPartFromJSON)),
         'finish': json['finish'] == null ? undefined : json['finish'],
         'maximumWeightGsm': json['maximum_weight_gsm'] == null ? undefined : json['maximum_weight_gsm'],
         'minimumWeightGsm': json['minimum_weight_gsm'] == null ? undefined : json['minimum_weight_gsm'],
@@ -70,7 +70,7 @@ function MaterialCapabilityToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'category': value['category'],
         'certifications': value['certifications'],
-        'composition': value['composition'] == null ? undefined : (value['composition'].map(MaterialCompositionPart_1.MaterialCompositionPartToJSON)),
+        'composition': value['composition'] == null ? undefined : (value['composition'].map(AppModelsProducerMaterialCompositionPart_1.AppModelsProducerMaterialCompositionPartToJSON)),
         'finish': value['finish'],
         'maximum_weight_gsm': value['maximumWeightGsm'],
         'minimum_weight_gsm': value['minimumWeightGsm'],

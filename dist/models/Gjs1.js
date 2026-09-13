@@ -17,9 +17,13 @@ exports.Gjs1FromJSONTyped = Gjs1FromJSONTyped;
 exports.Gjs1ToJSON = Gjs1ToJSON;
 exports.Gjs1ToJSONTyped = Gjs1ToJSONTyped;
 const PrintComponent_1 = require("./PrintComponent");
+const ManufacturingOperation_1 = require("./ManufacturingOperation");
 const UseRequirement_1 = require("./UseRequirement");
+const QualityRequirement_1 = require("./QualityRequirement");
 const ServiceRequirements_1 = require("./ServiceRequirements");
+const ManufacturingVariation_1 = require("./ManufacturingVariation");
 const Quantity_1 = require("./Quantity");
+const ManufacturingAssembly_1 = require("./ManufacturingAssembly");
 const ProductOptions_1 = require("./ProductOptions");
 /**
  * @export
@@ -103,6 +107,8 @@ exports.Gjs1StatusEnum = {
  * Check if a given object implements the Gjs1 interface.
  */
 function instanceOfGjs1(value) {
+    if (!('components' in value) || value['components'] === undefined)
+        return false;
     if (!('productFamily' in value) || value['productFamily'] === undefined)
         return false;
     return true;
@@ -115,12 +121,14 @@ function Gjs1FromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'components': json['components'] == null ? undefined : (json['components'].map(PrintComponent_1.PrintComponentFromJSON)),
+        'assemblies': json['assemblies'] == null ? undefined : (json['assemblies'].map(ManufacturingAssembly_1.ManufacturingAssemblyFromJSON)),
+        'components': (json['components'].map(PrintComponent_1.PrintComponentFromJSON)),
         'confidence': json['confidence'] == null ? undefined : json['confidence'],
-        'options': json['options'] == null ? undefined : (0, ProductOptions_1.ProductOptionsFromJSON)(json['options']),
+        'operations': json['operations'] == null ? undefined : (json['operations'].map(ManufacturingOperation_1.ManufacturingOperationFromJSON)),
         'productCategory': json['product_category'] == null ? undefined : json['product_category'],
         'productFamily': json['product_family'],
         'productName': json['product_name'] == null ? undefined : json['product_name'],
+        'qualityRequirements': json['quality_requirements'] == null ? undefined : (json['quality_requirements'].map(QualityRequirement_1.QualityRequirementFromJSON)),
         'quantity': json['quantity'] == null ? undefined : (0, Quantity_1.QuantityFromJSON)(json['quantity']),
         'schemaName': json['schema_name'] == null ? undefined : json['schema_name'],
         'schemaVersion': json['schema_version'] == null ? undefined : json['schema_version'],
@@ -128,6 +136,8 @@ function Gjs1FromJSONTyped(json, ignoreDiscriminator) {
         'status': json['status'] == null ? undefined : json['status'],
         'unresolvedFields': json['unresolved_fields'] == null ? undefined : json['unresolved_fields'],
         'useRequirements': json['use_requirements'] == null ? undefined : (json['use_requirements'].map(UseRequirement_1.UseRequirementFromJSON)),
+        'variations': json['variations'] == null ? undefined : (json['variations'].map(ManufacturingVariation_1.ManufacturingVariationFromJSON)),
+        'options': json['options'] == null ? undefined : (0, ProductOptions_1.ProductOptionsFromJSON)(json['options']),
     };
 }
 function Gjs1ToJSON(json) {
@@ -138,12 +148,14 @@ function Gjs1ToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'components': value['components'] == null ? undefined : (value['components'].map(PrintComponent_1.PrintComponentToJSON)),
+        'assemblies': value['assemblies'] == null ? undefined : (value['assemblies'].map(ManufacturingAssembly_1.ManufacturingAssemblyToJSON)),
+        'components': (value['components'].map(PrintComponent_1.PrintComponentToJSON)),
         'confidence': value['confidence'],
-        'options': (0, ProductOptions_1.ProductOptionsToJSON)(value['options']),
+        'operations': value['operations'] == null ? undefined : (value['operations'].map(ManufacturingOperation_1.ManufacturingOperationToJSON)),
         'product_category': value['productCategory'],
         'product_family': value['productFamily'],
         'product_name': value['productName'],
+        'quality_requirements': value['qualityRequirements'] == null ? undefined : (value['qualityRequirements'].map(QualityRequirement_1.QualityRequirementToJSON)),
         'quantity': (0, Quantity_1.QuantityToJSON)(value['quantity']),
         'schema_name': value['schemaName'],
         'schema_version': value['schemaVersion'],
@@ -151,5 +163,7 @@ function Gjs1ToJSONTyped(value, ignoreDiscriminator = false) {
         'status': value['status'],
         'unresolved_fields': value['unresolvedFields'],
         'use_requirements': value['useRequirements'] == null ? undefined : (value['useRequirements'].map(UseRequirement_1.UseRequirementToJSON)),
+        'variations': value['variations'] == null ? undefined : (value['variations'].map(ManufacturingVariation_1.ManufacturingVariationToJSON)),
+        'options': (0, ProductOptions_1.ProductOptionsToJSON)(value['options']),
     };
 }

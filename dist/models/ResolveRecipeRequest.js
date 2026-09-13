@@ -15,7 +15,7 @@ exports.ResolveRecipeRequestFromJSON = ResolveRecipeRequestFromJSON;
 exports.ResolveRecipeRequestFromJSONTyped = ResolveRecipeRequestFromJSONTyped;
 exports.ResolveRecipeRequestToJSON = ResolveRecipeRequestToJSON;
 exports.ResolveRecipeRequestToJSONTyped = ResolveRecipeRequestToJSONTyped;
-const Gjs1_1 = require("./Gjs1");
+const Gjs_1 = require("./Gjs");
 /**
  * Check if a given object implements the ResolveRecipeRequest interface.
  */
@@ -32,7 +32,7 @@ function ResolveRecipeRequestFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'gjs': (0, Gjs1_1.Gjs1FromJSON)(json['gjs']),
+        'gjs': (0, Gjs_1.GjsFromJSON)(json['gjs']),
     };
 }
 function ResolveRecipeRequestToJSON(json) {
@@ -43,6 +43,6 @@ function ResolveRecipeRequestToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'gjs': (0, Gjs1_1.Gjs1ToJSON)(value['gjs']),
+        'gjs': (0, Gjs_1.GjsToJSON)(value['gjs']),
     };
 }

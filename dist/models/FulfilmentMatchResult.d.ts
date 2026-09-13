@@ -45,10 +45,22 @@ export interface FulfilmentMatchResult {
     offeredMinimumDeliveryWorkingDays?: number | null;
     /**
      *
+     * @type {Array<FulfilmentMatchResultOfferedServiceClassesEnum>}
+     * @memberof FulfilmentMatchResult
+     */
+    offeredServiceClasses?: Array<FulfilmentMatchResultOfferedServiceClassesEnum>;
+    /**
+     *
      * @type {number}
      * @memberof FulfilmentMatchResult
      */
     requestedMaximumDeliveryWorkingDays?: number | null;
+    /**
+     *
+     * @type {FulfilmentMatchResultRequestedServiceClassEnum}
+     * @memberof FulfilmentMatchResult
+     */
+    requestedServiceClass?: FulfilmentMatchResultRequestedServiceClassEnum | null;
     /**
      *
      * @type {Array<string>}
@@ -62,6 +74,24 @@ export interface FulfilmentMatchResult {
      */
     status: FulfilmentMatchResultStatusEnum;
 }
+/**
+ * @export
+ */
+export declare const FulfilmentMatchResultOfferedServiceClassesEnum: {
+    readonly Standard: "standard";
+    readonly Express: "express";
+    readonly Freight: "freight";
+};
+export type FulfilmentMatchResultOfferedServiceClassesEnum = typeof FulfilmentMatchResultOfferedServiceClassesEnum[keyof typeof FulfilmentMatchResultOfferedServiceClassesEnum];
+/**
+ * @export
+ */
+export declare const FulfilmentMatchResultRequestedServiceClassEnum: {
+    readonly Standard: "standard";
+    readonly Express: "express";
+    readonly Freight: "freight";
+};
+export type FulfilmentMatchResultRequestedServiceClassEnum = typeof FulfilmentMatchResultRequestedServiceClassEnum[keyof typeof FulfilmentMatchResultRequestedServiceClassEnum];
 /**
  * @export
  */

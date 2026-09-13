@@ -10,12 +10,21 @@
  *
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FulfilmentRequirementServiceClassEnum = void 0;
 exports.instanceOfFulfilmentRequirement = instanceOfFulfilmentRequirement;
 exports.FulfilmentRequirementFromJSON = FulfilmentRequirementFromJSON;
 exports.FulfilmentRequirementFromJSONTyped = FulfilmentRequirementFromJSONTyped;
 exports.FulfilmentRequirementToJSON = FulfilmentRequirementToJSON;
 exports.FulfilmentRequirementToJSONTyped = FulfilmentRequirementToJSONTyped;
 const DeliveryDestination_1 = require("./DeliveryDestination");
+/**
+ * @export
+ */
+exports.FulfilmentRequirementServiceClassEnum = {
+    Standard: 'standard',
+    Express: 'express',
+    Freight: 'freight'
+};
 /**
  * Check if a given object implements the FulfilmentRequirement interface.
  */
@@ -34,6 +43,7 @@ function FulfilmentRequirementFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'destination': (0, DeliveryDestination_1.DeliveryDestinationFromJSON)(json['destination']),
         'maximumDeliveryWorkingDays': json['maximum_delivery_working_days'] == null ? undefined : json['maximum_delivery_working_days'],
+        'serviceClass': json['service_class'] == null ? undefined : json['service_class'],
     };
 }
 function FulfilmentRequirementToJSON(json) {
@@ -46,5 +56,6 @@ function FulfilmentRequirementToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'destination': (0, DeliveryDestination_1.DeliveryDestinationToJSON)(value['destination']),
         'maximum_delivery_working_days': value['maximumDeliveryWorkingDays'],
+        'service_class': value['serviceClass'],
     };
 }

@@ -21,10 +21,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InterpretationApi = void 0;
 const runtime = require("../runtime");
-const ContinuePrintRequirementRequest_1 = require("../models/ContinuePrintRequirementRequest");
-const ContinuePrintRequirementResponse_1 = require("../models/ContinuePrintRequirementResponse");
+const ContinueInterpretationRequestV02_1 = require("../models/ContinueInterpretationRequestV02");
 const InterpretPrintRequirementRequest_1 = require("../models/InterpretPrintRequirementRequest");
-const InterpretPrintRequirementResponse_1 = require("../models/InterpretPrintRequirementResponse");
+const InterpretationResultV02_1 = require("../models/InterpretationResultV02");
 /**
  *
  */
@@ -34,8 +33,8 @@ class InterpretationApi extends runtime.BaseAPI {
      */
     continuePrintRequirementInterpretationRequestOpts(requestParameters) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (requestParameters['continuePrintRequirementRequest'] == null) {
-                throw new runtime.RequiredError('continuePrintRequirementRequest', 'Required parameter "continuePrintRequirementRequest" was null or undefined when calling continuePrintRequirementInterpretation().');
+            if (requestParameters['continueInterpretationRequestV02'] == null) {
+                throw new runtime.RequiredError('continueInterpretationRequestV02', 'Required parameter "continueInterpretationRequestV02" was null or undefined when calling continuePrintRequirementInterpretation().');
             }
             const queryParameters = {};
             const headerParameters = {};
@@ -52,23 +51,23 @@ class InterpretationApi extends runtime.BaseAPI {
                 method: 'POST',
                 headers: headerParameters,
                 query: queryParameters,
-                body: (0, ContinuePrintRequirementRequest_1.ContinuePrintRequirementRequestToJSON)(requestParameters['continuePrintRequirementRequest']),
+                body: (0, ContinueInterpretationRequestV02_1.ContinueInterpretationRequestV02ToJSON)(requestParameters['continueInterpretationRequestV02']),
             };
         });
     }
     /**
-     * Continue a review state through Gnaww-owned production questions.
+     * Continue a review state and return the same interpretation envelope.
      * Continue Print Requirement Interpretation
      */
     continuePrintRequirementInterpretationRaw(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
             const requestOptions = yield this.continuePrintRequirementInterpretationRequestOpts(requestParameters);
             const response = yield this.request(requestOptions, initOverrides);
-            return new runtime.JSONApiResponse(response, (jsonValue) => (0, ContinuePrintRequirementResponse_1.ContinuePrintRequirementResponseFromJSON)(jsonValue));
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, InterpretationResultV02_1.InterpretationResultV02FromJSON)(jsonValue));
         });
     }
     /**
-     * Continue a review state through Gnaww-owned production questions.
+     * Continue a review state and return the same interpretation envelope.
      * Continue Print Requirement Interpretation
      */
     continuePrintRequirementInterpretation(requestParameters, initOverrides) {
@@ -105,18 +104,18 @@ class InterpretationApi extends runtime.BaseAPI {
         });
     }
     /**
-     * Interpret ordinary input without forcing review states into SpecMatch.
+     * Interpret ordinary input and enrich review-safe functional solution intent.
      * Interpret Print Requirement
      */
     interpretPrintRequirementRaw(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
             const requestOptions = yield this.interpretPrintRequirementRequestOpts(requestParameters);
             const response = yield this.request(requestOptions, initOverrides);
-            return new runtime.JSONApiResponse(response, (jsonValue) => (0, InterpretPrintRequirementResponse_1.InterpretPrintRequirementResponseFromJSON)(jsonValue));
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, InterpretationResultV02_1.InterpretationResultV02FromJSON)(jsonValue));
         });
     }
     /**
-     * Interpret ordinary input without forcing review states into SpecMatch.
+     * Interpret ordinary input and enrich review-safe functional solution intent.
      * Interpret Print Requirement
      */
     interpretPrintRequirement(requestParameters, initOverrides) {

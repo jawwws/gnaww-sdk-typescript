@@ -17,6 +17,20 @@ import {
     PrintComponentToJSON,
     PrintComponentToJSONTyped,
 } from './PrintComponent';
+import type { ManufacturingOperation } from './ManufacturingOperation';
+import {
+    ManufacturingOperationFromJSON,
+    ManufacturingOperationFromJSONTyped,
+    ManufacturingOperationToJSON,
+    ManufacturingOperationToJSONTyped,
+} from './ManufacturingOperation';
+import type { PrintJobSpecificationV05 } from './PrintJobSpecificationV05';
+import {
+    PrintJobSpecificationV05FromJSON,
+    PrintJobSpecificationV05FromJSONTyped,
+    PrintJobSpecificationV05ToJSON,
+    PrintJobSpecificationV05ToJSONTyped,
+} from './PrintJobSpecificationV05';
 import type { UseRequirement } from './UseRequirement';
 import {
     UseRequirementFromJSON,
@@ -24,6 +38,13 @@ import {
     UseRequirementToJSON,
     UseRequirementToJSONTyped,
 } from './UseRequirement';
+import type { QualityRequirement } from './QualityRequirement';
+import {
+    QualityRequirementFromJSON,
+    QualityRequirementFromJSONTyped,
+    QualityRequirementToJSON,
+    QualityRequirementToJSONTyped,
+} from './QualityRequirement';
 import type { ServiceRequirements } from './ServiceRequirements';
 import {
     ServiceRequirementsFromJSON,
@@ -38,6 +59,13 @@ import {
     PrintJobSpecificationToJSON,
     PrintJobSpecificationToJSONTyped,
 } from './PrintJobSpecification';
+import type { ManufacturingVariation } from './ManufacturingVariation';
+import {
+    ManufacturingVariationFromJSON,
+    ManufacturingVariationFromJSONTyped,
+    ManufacturingVariationToJSON,
+    ManufacturingVariationToJSONTyped,
+} from './ManufacturingVariation';
 import type { Quantity } from './Quantity';
 import {
     QuantityFromJSON,
@@ -45,6 +73,13 @@ import {
     QuantityToJSON,
     QuantityToJSONTyped,
 } from './Quantity';
+import type { ManufacturingAssembly } from './ManufacturingAssembly';
+import {
+    ManufacturingAssemblyFromJSON,
+    ManufacturingAssemblyFromJSONTyped,
+    ManufacturingAssemblyToJSON,
+    ManufacturingAssemblyToJSONTyped,
+} from './ManufacturingAssembly';
 import type { PrintJobSpecificationV04 } from './PrintJobSpecificationV04';
 import {
     PrintJobSpecificationV04FromJSON,
@@ -68,10 +103,16 @@ import {
 export interface Gjs1 {
     /**
      *
+     * @type {Array<ManufacturingAssembly>}
+     * @memberof Gjs1
+     */
+    assemblies?: Array<ManufacturingAssembly>;
+    /**
+     *
      * @type {Array<PrintComponent>}
      * @memberof Gjs1
      */
-    components?: Array<PrintComponent>;
+    components: Array<PrintComponent>;
     /**
      *
      * @type {number}
@@ -80,10 +121,10 @@ export interface Gjs1 {
     confidence?: number;
     /**
      *
-     * @type {ProductOptions}
+     * @type {Array<ManufacturingOperation>}
      * @memberof Gjs1
      */
-    options?: ProductOptions;
+    operations?: Array<ManufacturingOperation>;
     /**
      *
      * @type {Gjs1ProductCategoryEnum}
@@ -102,6 +143,12 @@ export interface Gjs1 {
      * @memberof Gjs1
      */
     productName?: string;
+    /**
+     *
+     * @type {Array<QualityRequirement>}
+     * @memberof Gjs1
+     */
+    qualityRequirements?: Array<QualityRequirement>;
     /**
      *
      * @type {Quantity}
@@ -144,6 +191,18 @@ export interface Gjs1 {
      * @memberof Gjs1
      */
     useRequirements?: Array<UseRequirement>;
+    /**
+     *
+     * @type {Array<ManufacturingVariation>}
+     * @memberof Gjs1
+     */
+    variations?: Array<ManufacturingVariation>;
+    /**
+     *
+     * @type {ProductOptions}
+     * @memberof Gjs1
+     */
+    options?: ProductOptions;
 }
 
 
@@ -238,6 +297,7 @@ export type Gjs1StatusEnum = typeof Gjs1StatusEnum[keyof typeof Gjs1StatusEnum];
  * Check if a given object implements the Gjs1 interface.
  */
 export function instanceOfGjs1(value: object): value is Gjs1 {
+    if (!('components' in value) || value['components'] === undefined) return false;
     if (!('productFamily' in value) || value['productFamily'] === undefined) return false;
     return true;
 }
@@ -252,12 +312,14 @@ export function Gjs1FromJSONTyped(json: any, ignoreDiscriminator: boolean): Gjs1
     }
     return {
 
-        'components': json['components'] == null ? undefined : ((json['components'] as Array<any>).map(PrintComponentFromJSON)),
+        'assemblies': json['assemblies'] == null ? undefined : ((json['assemblies'] as Array<any>).map(ManufacturingAssemblyFromJSON)),
+        'components': ((json['components'] as Array<any>).map(PrintComponentFromJSON)),
         'confidence': json['confidence'] == null ? undefined : json['confidence'],
-        'options': json['options'] == null ? undefined : ProductOptionsFromJSON(json['options']),
+        'operations': json['operations'] == null ? undefined : ((json['operations'] as Array<any>).map(ManufacturingOperationFromJSON)),
         'productCategory': json['product_category'] == null ? undefined : json['product_category'],
         'productFamily': json['product_family'],
         'productName': json['product_name'] == null ? undefined : json['product_name'],
+        'qualityRequirements': json['quality_requirements'] == null ? undefined : ((json['quality_requirements'] as Array<any>).map(QualityRequirementFromJSON)),
         'quantity': json['quantity'] == null ? undefined : QuantityFromJSON(json['quantity']),
         'schemaName': json['schema_name'] == null ? undefined : json['schema_name'],
         'schemaVersion': json['schema_version'] == null ? undefined : json['schema_version'],
@@ -265,6 +327,8 @@ export function Gjs1FromJSONTyped(json: any, ignoreDiscriminator: boolean): Gjs1
         'status': json['status'] == null ? undefined : json['status'],
         'unresolvedFields': json['unresolved_fields'] == null ? undefined : json['unresolved_fields'],
         'useRequirements': json['use_requirements'] == null ? undefined : ((json['use_requirements'] as Array<any>).map(UseRequirementFromJSON)),
+        'variations': json['variations'] == null ? undefined : ((json['variations'] as Array<any>).map(ManufacturingVariationFromJSON)),
+        'options': json['options'] == null ? undefined : ProductOptionsFromJSON(json['options']),
     };
 }
 
@@ -279,12 +343,14 @@ export function Gjs1ToJSONTyped(value?: Gjs1 | null, ignoreDiscriminator: boolea
 
     return {
 
-        'components': value['components'] == null ? undefined : ((value['components'] as Array<any>).map(PrintComponentToJSON)),
+        'assemblies': value['assemblies'] == null ? undefined : ((value['assemblies'] as Array<any>).map(ManufacturingAssemblyToJSON)),
+        'components': ((value['components'] as Array<any>).map(PrintComponentToJSON)),
         'confidence': value['confidence'],
-        'options': ProductOptionsToJSON(value['options']),
+        'operations': value['operations'] == null ? undefined : ((value['operations'] as Array<any>).map(ManufacturingOperationToJSON)),
         'product_category': value['productCategory'],
         'product_family': value['productFamily'],
         'product_name': value['productName'],
+        'quality_requirements': value['qualityRequirements'] == null ? undefined : ((value['qualityRequirements'] as Array<any>).map(QualityRequirementToJSON)),
         'quantity': QuantityToJSON(value['quantity']),
         'schema_name': value['schemaName'],
         'schema_version': value['schemaVersion'],
@@ -292,5 +358,7 @@ export function Gjs1ToJSONTyped(value?: Gjs1 | null, ignoreDiscriminator: boolea
         'status': value['status'],
         'unresolved_fields': value['unresolvedFields'],
         'use_requirements': value['useRequirements'] == null ? undefined : ((value['useRequirements'] as Array<any>).map(UseRequirementToJSON)),
+        'variations': value['variations'] == null ? undefined : ((value['variations'] as Array<any>).map(ManufacturingVariationToJSON)),
+        'options': ProductOptionsToJSON(value['options']),
     };
 }

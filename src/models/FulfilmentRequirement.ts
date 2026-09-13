@@ -36,7 +36,25 @@ export interface FulfilmentRequirement {
      * @memberof FulfilmentRequirement
      */
     maximumDeliveryWorkingDays?: number | null;
+    /**
+     *
+     * @type {FulfilmentRequirementServiceClassEnum}
+     * @memberof FulfilmentRequirement
+     */
+    serviceClass?: FulfilmentRequirementServiceClassEnum | null;
 }
+
+
+/**
+ * @export
+ */
+export const FulfilmentRequirementServiceClassEnum = {
+    Standard: 'standard',
+    Express: 'express',
+    Freight: 'freight'
+} as const;
+export type FulfilmentRequirementServiceClassEnum = typeof FulfilmentRequirementServiceClassEnum[keyof typeof FulfilmentRequirementServiceClassEnum];
+
 
 /**
  * Check if a given object implements the FulfilmentRequirement interface.
@@ -58,6 +76,7 @@ export function FulfilmentRequirementFromJSONTyped(json: any, ignoreDiscriminato
 
         'destination': DeliveryDestinationFromJSON(json['destination']),
         'maximumDeliveryWorkingDays': json['maximum_delivery_working_days'] == null ? undefined : json['maximum_delivery_working_days'],
+        'serviceClass': json['service_class'] == null ? undefined : json['service_class'],
     };
 }
 
@@ -74,5 +93,6 @@ export function FulfilmentRequirementToJSONTyped(value?: FulfilmentRequirement |
 
         'destination': DeliveryDestinationToJSON(value['destination']),
         'maximum_delivery_working_days': value['maximumDeliveryWorkingDays'],
+        'service_class': value['serviceClass'],
     };
 }

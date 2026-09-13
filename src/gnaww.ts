@@ -6,7 +6,7 @@ import {
 } from "./runtime";
 import { InterpretationApi, RecipesApi } from "./apis";
 import type {
-  InterpretPrintRequirementResponse,
+  InterpretationResultV02,
   MatchRecipeResponse,
   PrintJobSpecification,
   PrintJobSpecificationV04,
@@ -54,6 +54,11 @@ export interface CrunchOptions {
   target: PublicMatchTargetRequest;
 }
 
+export interface GnawwClarificationAnswer {
+  questionId: string;
+  value: string;
+}
+
 export type CanonicalGjs = PrintJobSpecification | PrintJobSpecificationV04;
 
 export class GnawwClient {
@@ -61,7 +66,10 @@ export class GnawwClient {
   private readonly recipes: RecipesApi;
 
   constructor(options: GnawwClientOptions) {
-    const headers: Record<string, string> = {};
+    const headers: Record<string, string> = {
+      "X-Gnaww-Source-Channel": "sdk",
+      "X-Gnaww-Client-Id": "gnaww-typescript-sdk",
+    };
     if (options.workspaceId) {
       headers["X-Gnaww-Workspace-Id"] = options.workspaceId;
     }
@@ -77,13 +85,13 @@ export class GnawwClient {
     this.recipes = new RecipesApi(configuration);
   }
 
-  async consume(requirement: string): Promise<InterpretPrintRequirementResponse> {
+  async consume(requirement: string): Promise<InterpretationResultV02> {
     return (await this.consumeDetailed(requirement)).data;
   }
 
   async consumeDetailed(
     requirement: string,
-  ): Promise<GnawwResponse<InterpretPrintRequirementResponse>> {
+  ): Promise<GnawwResponse<InterpretationResultV02>> {
     const source: SourceInput = {
       type: "natural_language",
       rawText: requirement,
@@ -94,6 +102,33 @@ export class GnawwClient {
         interpretPrintRequirementRequest: {
           source,
           gjsVersion: "0.4",
+        },
+      }),
+    );
+  }
+
+  async continueRequirement(
+    requirement: string,
+    answers: GnawwClarificationAnswer[],
+  ): Promise<InterpretationResultV02> {
+    return (await this.continueRequirementDetailed(requirement, answers)).data;
+  }
+
+  async continueRequirementDetailed(
+    requirement: string,
+    answers: GnawwClarificationAnswer[],
+  ): Promise<GnawwResponse<InterpretationResultV02>> {
+    const source: SourceInput = {
+      type: "natural_language",
+      rawText: requirement,
+    };
+
+    return this.detailed(() =>
+      this.interpretation.continuePrintRequirementInterpretationRaw({
+        continueInterpretationRequestV02: {
+          source,
+          gjsVersion: "0.4",
+          answers,
         },
       }),
     );
