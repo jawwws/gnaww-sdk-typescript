@@ -1,6 +1,6 @@
 {
   "name": "@jawwws/gnaww",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Official TypeScript/JavaScript SDK for the Gnaww print intelligence API.",
   "author": "Jawwws Ltd",
   "repository": {

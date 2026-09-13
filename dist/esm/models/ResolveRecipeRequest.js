@@ -8,7 +8,7 @@
  *
  *
  */
-import { Gjs1FromJSON, Gjs1ToJSON, } from './Gjs1';
+import { GjsFromJSON, GjsToJSON, } from './Gjs';
 /**
  * Check if a given object implements the ResolveRecipeRequest interface.
  */
@@ -25,7 +25,7 @@ export function ResolveRecipeRequestFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'gjs': Gjs1FromJSON(json['gjs']),
+        'gjs': GjsFromJSON(json['gjs']),
     };
 }
 export function ResolveRecipeRequestToJSON(json) {
@@ -36,6 +36,6 @@ export function ResolveRecipeRequestToJSONTyped(value, ignoreDiscriminator = fal
         return value;
     }
     return {
-        'gjs': Gjs1ToJSON(value['gjs']),
+        'gjs': GjsToJSON(value['gjs']),
     };
 }

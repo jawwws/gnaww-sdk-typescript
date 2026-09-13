@@ -56,10 +56,22 @@ export interface FulfilmentMatchResult {
     offeredMinimumDeliveryWorkingDays?: number | null;
     /**
      *
+     * @type {Array<FulfilmentMatchResultOfferedServiceClassesEnum>}
+     * @memberof FulfilmentMatchResult
+     */
+    offeredServiceClasses?: Array<FulfilmentMatchResultOfferedServiceClassesEnum>;
+    /**
+     *
      * @type {number}
      * @memberof FulfilmentMatchResult
      */
     requestedMaximumDeliveryWorkingDays?: number | null;
+    /**
+     *
+     * @type {FulfilmentMatchResultRequestedServiceClassEnum}
+     * @memberof FulfilmentMatchResult
+     */
+    requestedServiceClass?: FulfilmentMatchResultRequestedServiceClassEnum | null;
     /**
      *
      * @type {Array<string>}
@@ -74,6 +86,26 @@ export interface FulfilmentMatchResult {
     status: FulfilmentMatchResultStatusEnum;
 }
 
+
+/**
+ * @export
+ */
+export const FulfilmentMatchResultOfferedServiceClassesEnum = {
+    Standard: 'standard',
+    Express: 'express',
+    Freight: 'freight'
+} as const;
+export type FulfilmentMatchResultOfferedServiceClassesEnum = typeof FulfilmentMatchResultOfferedServiceClassesEnum[keyof typeof FulfilmentMatchResultOfferedServiceClassesEnum];
+
+/**
+ * @export
+ */
+export const FulfilmentMatchResultRequestedServiceClassEnum = {
+    Standard: 'standard',
+    Express: 'express',
+    Freight: 'freight'
+} as const;
+export type FulfilmentMatchResultRequestedServiceClassEnum = typeof FulfilmentMatchResultRequestedServiceClassEnum[keyof typeof FulfilmentMatchResultRequestedServiceClassEnum];
 
 /**
  * @export
@@ -110,7 +142,9 @@ export function FulfilmentMatchResultFromJSONTyped(json: any, ignoreDiscriminato
         'matchReasons': json['match_reasons'] == null ? undefined : json['match_reasons'],
         'offeredMaximumDeliveryWorkingDays': json['offered_maximum_delivery_working_days'] == null ? undefined : json['offered_maximum_delivery_working_days'],
         'offeredMinimumDeliveryWorkingDays': json['offered_minimum_delivery_working_days'] == null ? undefined : json['offered_minimum_delivery_working_days'],
+        'offeredServiceClasses': json['offered_service_classes'] == null ? undefined : json['offered_service_classes'],
         'requestedMaximumDeliveryWorkingDays': json['requested_maximum_delivery_working_days'] == null ? undefined : json['requested_maximum_delivery_working_days'],
+        'requestedServiceClass': json['requested_service_class'] == null ? undefined : json['requested_service_class'],
         'serviceCountryCodes': json['service_country_codes'] == null ? undefined : json['service_country_codes'],
         'status': json['status'],
     };
@@ -132,7 +166,9 @@ export function FulfilmentMatchResultToJSONTyped(value?: FulfilmentMatchResult |
         'match_reasons': value['matchReasons'],
         'offered_maximum_delivery_working_days': value['offeredMaximumDeliveryWorkingDays'],
         'offered_minimum_delivery_working_days': value['offeredMinimumDeliveryWorkingDays'],
+        'offered_service_classes': value['offeredServiceClasses'],
         'requested_maximum_delivery_working_days': value['requestedMaximumDeliveryWorkingDays'],
+        'requested_service_class': value['requestedServiceClass'],
         'service_country_codes': value['serviceCountryCodes'],
         'status': value['status'],
     };

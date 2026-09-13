@@ -19,7 +19,10 @@ export class GnawwApiError extends Error {
 export class GnawwClient {
     constructor(options) {
         var _a;
-        const headers = {};
+        const headers = {
+            "X-Gnaww-Source-Channel": "sdk",
+            "X-Gnaww-Client-Id": "gnaww-typescript-sdk",
+        };
         if (options.workspaceId) {
             headers["X-Gnaww-Workspace-Id"] = options.workspaceId;
         }
@@ -47,6 +50,26 @@ export class GnawwClient {
                 interpretPrintRequirementRequest: {
                     source,
                     gjsVersion: "0.4",
+                },
+            }));
+        });
+    }
+    continueRequirement(requirement, answers) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (yield this.continueRequirementDetailed(requirement, answers)).data;
+        });
+    }
+    continueRequirementDetailed(requirement, answers) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const source = {
+                type: "natural_language",
+                rawText: requirement,
+            };
+            return this.detailed(() => this.interpretation.continuePrintRequirementInterpretationRaw({
+                continueInterpretationRequestV02: {
+                    source,
+                    gjsVersion: "0.4",
+                    answers,
                 },
             }));
         });

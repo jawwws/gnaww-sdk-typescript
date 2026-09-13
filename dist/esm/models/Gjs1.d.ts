@@ -7,9 +7,13 @@
  *
  */
 import type { PrintComponent } from './PrintComponent';
+import type { ManufacturingOperation } from './ManufacturingOperation';
 import type { UseRequirement } from './UseRequirement';
+import type { QualityRequirement } from './QualityRequirement';
 import type { ServiceRequirements } from './ServiceRequirements';
+import type { ManufacturingVariation } from './ManufacturingVariation';
 import type { Quantity } from './Quantity';
+import type { ManufacturingAssembly } from './ManufacturingAssembly';
 import type { ProductOptions } from './ProductOptions';
 /**
  *
@@ -19,10 +23,16 @@ import type { ProductOptions } from './ProductOptions';
 export interface Gjs1 {
     /**
      *
+     * @type {Array<ManufacturingAssembly>}
+     * @memberof Gjs1
+     */
+    assemblies?: Array<ManufacturingAssembly>;
+    /**
+     *
      * @type {Array<PrintComponent>}
      * @memberof Gjs1
      */
-    components?: Array<PrintComponent>;
+    components: Array<PrintComponent>;
     /**
      *
      * @type {number}
@@ -31,10 +41,10 @@ export interface Gjs1 {
     confidence?: number;
     /**
      *
-     * @type {ProductOptions}
+     * @type {Array<ManufacturingOperation>}
      * @memberof Gjs1
      */
-    options?: ProductOptions;
+    operations?: Array<ManufacturingOperation>;
     /**
      *
      * @type {Gjs1ProductCategoryEnum}
@@ -53,6 +63,12 @@ export interface Gjs1 {
      * @memberof Gjs1
      */
     productName?: string;
+    /**
+     *
+     * @type {Array<QualityRequirement>}
+     * @memberof Gjs1
+     */
+    qualityRequirements?: Array<QualityRequirement>;
     /**
      *
      * @type {Quantity}
@@ -95,6 +111,18 @@ export interface Gjs1 {
      * @memberof Gjs1
      */
     useRequirements?: Array<UseRequirement>;
+    /**
+     *
+     * @type {Array<ManufacturingVariation>}
+     * @memberof Gjs1
+     */
+    variations?: Array<ManufacturingVariation>;
+    /**
+     *
+     * @type {ProductOptions}
+     * @memberof Gjs1
+     */
+    options?: ProductOptions;
 }
 /**
  * @export

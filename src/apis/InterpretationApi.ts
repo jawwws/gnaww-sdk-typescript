@@ -11,20 +11,15 @@
 
 import * as runtime from '../runtime';
 import {
+    type ContinueInterpretationRequestV02,
+    ContinueInterpretationRequestV02FromJSON,
+    ContinueInterpretationRequestV02ToJSON,
+} from '../models/ContinueInterpretationRequestV02';
+import {
     type ContinuePrintRequirementInterpretationDefaultResponse,
     ContinuePrintRequirementInterpretationDefaultResponseFromJSON,
     ContinuePrintRequirementInterpretationDefaultResponseToJSON,
 } from '../models/ContinuePrintRequirementInterpretationDefaultResponse';
-import {
-    type ContinuePrintRequirementRequest,
-    ContinuePrintRequirementRequestFromJSON,
-    ContinuePrintRequirementRequestToJSON,
-} from '../models/ContinuePrintRequirementRequest';
-import {
-    type ContinuePrintRequirementResponse,
-    ContinuePrintRequirementResponseFromJSON,
-    ContinuePrintRequirementResponseToJSON,
-} from '../models/ContinuePrintRequirementResponse';
 import {
     type InterpretPrintRequirementDefaultResponse,
     InterpretPrintRequirementDefaultResponseFromJSON,
@@ -36,13 +31,13 @@ import {
     InterpretPrintRequirementRequestToJSON,
 } from '../models/InterpretPrintRequirementRequest';
 import {
-    type InterpretPrintRequirementResponse,
-    InterpretPrintRequirementResponseFromJSON,
-    InterpretPrintRequirementResponseToJSON,
-} from '../models/InterpretPrintRequirementResponse';
+    type InterpretationResultV02,
+    InterpretationResultV02FromJSON,
+    InterpretationResultV02ToJSON,
+} from '../models/InterpretationResultV02';
 
 export interface ContinuePrintRequirementInterpretationRequest {
-    continuePrintRequirementRequest: ContinuePrintRequirementRequest;
+    continueInterpretationRequestV02: ContinueInterpretationRequestV02;
     xGnawwWorkspaceId?: string | null;
 }
 
@@ -60,10 +55,10 @@ export class InterpretationApi extends runtime.BaseAPI {
      * Creates request options for continuePrintRequirementInterpretation without sending the request
      */
     async continuePrintRequirementInterpretationRequestOpts(requestParameters: ContinuePrintRequirementInterpretationRequest): Promise<runtime.RequestOpts> {
-        if (requestParameters['continuePrintRequirementRequest'] == null) {
+        if (requestParameters['continueInterpretationRequestV02'] == null) {
             throw new runtime.RequiredError(
-                'continuePrintRequirementRequest',
-                'Required parameter "continuePrintRequirementRequest" was null or undefined when calling continuePrintRequirementInterpretation().'
+                'continueInterpretationRequestV02',
+                'Required parameter "continueInterpretationRequestV02" was null or undefined when calling continuePrintRequirementInterpretation().'
             );
         }
 
@@ -89,26 +84,26 @@ export class InterpretationApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ContinuePrintRequirementRequestToJSON(requestParameters['continuePrintRequirementRequest']),
+            body: ContinueInterpretationRequestV02ToJSON(requestParameters['continueInterpretationRequestV02']),
         };
     }
 
     /**
-     * Continue a review state through Gnaww-owned production questions.
+     * Continue a review state and return the same interpretation envelope.
      * Continue Print Requirement Interpretation
      */
-    async continuePrintRequirementInterpretationRaw(requestParameters: ContinuePrintRequirementInterpretationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ContinuePrintRequirementResponse>> {
+    async continuePrintRequirementInterpretationRaw(requestParameters: ContinuePrintRequirementInterpretationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InterpretationResultV02>> {
         const requestOptions = await this.continuePrintRequirementInterpretationRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ContinuePrintRequirementResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => InterpretationResultV02FromJSON(jsonValue));
     }
 
     /**
-     * Continue a review state through Gnaww-owned production questions.
+     * Continue a review state and return the same interpretation envelope.
      * Continue Print Requirement Interpretation
      */
-    async continuePrintRequirementInterpretation(requestParameters: ContinuePrintRequirementInterpretationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ContinuePrintRequirementResponse> {
+    async continuePrintRequirementInterpretation(requestParameters: ContinuePrintRequirementInterpretationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InterpretationResultV02> {
         const response = await this.continuePrintRequirementInterpretationRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -151,21 +146,21 @@ export class InterpretationApi extends runtime.BaseAPI {
     }
 
     /**
-     * Interpret ordinary input without forcing review states into SpecMatch.
+     * Interpret ordinary input and enrich review-safe functional solution intent.
      * Interpret Print Requirement
      */
-    async interpretPrintRequirementRaw(requestParameters: InterpretPrintRequirementOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InterpretPrintRequirementResponse>> {
+    async interpretPrintRequirementRaw(requestParameters: InterpretPrintRequirementOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InterpretationResultV02>> {
         const requestOptions = await this.interpretPrintRequirementRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => InterpretPrintRequirementResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => InterpretationResultV02FromJSON(jsonValue));
     }
 
     /**
-     * Interpret ordinary input without forcing review states into SpecMatch.
+     * Interpret ordinary input and enrich review-safe functional solution intent.
      * Interpret Print Requirement
      */
-    async interpretPrintRequirement(requestParameters: InterpretPrintRequirementOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InterpretPrintRequirementResponse> {
+    async interpretPrintRequirement(requestParameters: InterpretPrintRequirementOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InterpretationResultV02> {
         const response = await this.interpretPrintRequirementRaw(requestParameters, initOverrides);
         return await response.value();
     }

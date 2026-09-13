@@ -21,4 +21,5 @@ __exportStar(require("./InterpretationApi"), exports);
 __exportStar(require("./ProducerCapabilitiesApi"), exports);
 __exportStar(require("./RecipesApi"), exports);
 __exportStar(require("./SpecMatchApi"), exports);
+__exportStar(require("./SpecificationsApi"), exports);
 __exportStar(require("./TransformApi"), exports);

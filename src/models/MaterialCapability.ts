@@ -10,13 +10,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { MaterialCompositionPart } from './MaterialCompositionPart';
+import type { AppModelsProducerMaterialCompositionPart } from './AppModelsProducerMaterialCompositionPart';
 import {
-    MaterialCompositionPartFromJSON,
-    MaterialCompositionPartFromJSONTyped,
-    MaterialCompositionPartToJSON,
-    MaterialCompositionPartToJSONTyped,
-} from './MaterialCompositionPart';
+    AppModelsProducerMaterialCompositionPartFromJSON,
+    AppModelsProducerMaterialCompositionPartFromJSONTyped,
+    AppModelsProducerMaterialCompositionPartToJSON,
+    AppModelsProducerMaterialCompositionPartToJSONTyped,
+} from './AppModelsProducerMaterialCompositionPart';
 
 /**
  * A canonical material or substrate capability.
@@ -38,10 +38,10 @@ export interface MaterialCapability {
     certifications?: Array<string>;
     /**
      *
-     * @type {Array<MaterialCompositionPart>}
+     * @type {Array<AppModelsProducerMaterialCompositionPart>}
      * @memberof MaterialCapability
      */
-    composition?: Array<MaterialCompositionPart>;
+    composition?: Array<AppModelsProducerMaterialCompositionPart>;
     /**
      *
      * @type {string}
@@ -120,7 +120,7 @@ export function MaterialCapabilityFromJSONTyped(json: any, ignoreDiscriminator: 
 
         'category': json['category'] == null ? undefined : json['category'],
         'certifications': json['certifications'] == null ? undefined : json['certifications'],
-        'composition': json['composition'] == null ? undefined : ((json['composition'] as Array<any>).map(MaterialCompositionPartFromJSON)),
+        'composition': json['composition'] == null ? undefined : ((json['composition'] as Array<any>).map(AppModelsProducerMaterialCompositionPartFromJSON)),
         'finish': json['finish'] == null ? undefined : json['finish'],
         'maximumWeightGsm': json['maximum_weight_gsm'] == null ? undefined : json['maximum_weight_gsm'],
         'minimumWeightGsm': json['minimum_weight_gsm'] == null ? undefined : json['minimum_weight_gsm'],
@@ -143,7 +143,7 @@ export function MaterialCapabilityToJSONTyped(value?: MaterialCapability | null,
 
         'category': value['category'],
         'certifications': value['certifications'],
-        'composition': value['composition'] == null ? undefined : ((value['composition'] as Array<any>).map(MaterialCompositionPartToJSON)),
+        'composition': value['composition'] == null ? undefined : ((value['composition'] as Array<any>).map(AppModelsProducerMaterialCompositionPartToJSON)),
         'finish': value['finish'],
         'maximum_weight_gsm': value['maximumWeightGsm'],
         'minimum_weight_gsm': value['minimumWeightGsm'],

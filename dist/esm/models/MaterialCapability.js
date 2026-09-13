@@ -8,7 +8,7 @@
  *
  *
  */
-import { MaterialCompositionPartFromJSON, MaterialCompositionPartToJSON, } from './MaterialCompositionPart';
+import { AppModelsProducerMaterialCompositionPartFromJSON, AppModelsProducerMaterialCompositionPartToJSON, } from './AppModelsProducerMaterialCompositionPart';
 /**
  * @export
  */
@@ -43,7 +43,7 @@ export function MaterialCapabilityFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'category': json['category'] == null ? undefined : json['category'],
         'certifications': json['certifications'] == null ? undefined : json['certifications'],
-        'composition': json['composition'] == null ? undefined : (json['composition'].map(MaterialCompositionPartFromJSON)),
+        'composition': json['composition'] == null ? undefined : (json['composition'].map(AppModelsProducerMaterialCompositionPartFromJSON)),
         'finish': json['finish'] == null ? undefined : json['finish'],
         'maximumWeightGsm': json['maximum_weight_gsm'] == null ? undefined : json['maximum_weight_gsm'],
         'minimumWeightGsm': json['minimum_weight_gsm'] == null ? undefined : json['minimum_weight_gsm'],
@@ -62,7 +62,7 @@ export function MaterialCapabilityToJSONTyped(value, ignoreDiscriminator = false
     return {
         'category': value['category'],
         'certifications': value['certifications'],
-        'composition': value['composition'] == null ? undefined : (value['composition'].map(MaterialCompositionPartToJSON)),
+        'composition': value['composition'] == null ? undefined : (value['composition'].map(AppModelsProducerMaterialCompositionPartToJSON)),
         'finish': value['finish'],
         'maximum_weight_gsm': value['maximumWeightGsm'],
         'minimum_weight_gsm': value['minimumWeightGsm'],

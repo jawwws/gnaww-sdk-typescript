@@ -7,12 +7,11 @@
  *
  */
 import * as runtime from '../runtime';
-import { type ContinuePrintRequirementRequest } from '../models/ContinuePrintRequirementRequest';
-import { type ContinuePrintRequirementResponse } from '../models/ContinuePrintRequirementResponse';
+import { type ContinueInterpretationRequestV02 } from '../models/ContinueInterpretationRequestV02';
 import { type InterpretPrintRequirementRequest } from '../models/InterpretPrintRequirementRequest';
-import { type InterpretPrintRequirementResponse } from '../models/InterpretPrintRequirementResponse';
+import { type InterpretationResultV02 } from '../models/InterpretationResultV02';
 export interface ContinuePrintRequirementInterpretationRequest {
-    continuePrintRequirementRequest: ContinuePrintRequirementRequest;
+    continueInterpretationRequestV02: ContinueInterpretationRequestV02;
     xGnawwWorkspaceId?: string | null;
 }
 export interface InterpretPrintRequirementOperationRequest {
@@ -28,27 +27,27 @@ export declare class InterpretationApi extends runtime.BaseAPI {
      */
     continuePrintRequirementInterpretationRequestOpts(requestParameters: ContinuePrintRequirementInterpretationRequest): Promise<runtime.RequestOpts>;
     /**
-     * Continue a review state through Gnaww-owned production questions.
+     * Continue a review state and return the same interpretation envelope.
      * Continue Print Requirement Interpretation
      */
-    continuePrintRequirementInterpretationRaw(requestParameters: ContinuePrintRequirementInterpretationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ContinuePrintRequirementResponse>>;
+    continuePrintRequirementInterpretationRaw(requestParameters: ContinuePrintRequirementInterpretationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InterpretationResultV02>>;
     /**
-     * Continue a review state through Gnaww-owned production questions.
+     * Continue a review state and return the same interpretation envelope.
      * Continue Print Requirement Interpretation
      */
-    continuePrintRequirementInterpretation(requestParameters: ContinuePrintRequirementInterpretationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ContinuePrintRequirementResponse>;
+    continuePrintRequirementInterpretation(requestParameters: ContinuePrintRequirementInterpretationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InterpretationResultV02>;
     /**
      * Creates request options for interpretPrintRequirement without sending the request
      */
     interpretPrintRequirementRequestOpts(requestParameters: InterpretPrintRequirementOperationRequest): Promise<runtime.RequestOpts>;
     /**
-     * Interpret ordinary input without forcing review states into SpecMatch.
+     * Interpret ordinary input and enrich review-safe functional solution intent.
      * Interpret Print Requirement
      */
-    interpretPrintRequirementRaw(requestParameters: InterpretPrintRequirementOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InterpretPrintRequirementResponse>>;
+    interpretPrintRequirementRaw(requestParameters: InterpretPrintRequirementOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InterpretationResultV02>>;
     /**
-     * Interpret ordinary input without forcing review states into SpecMatch.
+     * Interpret ordinary input and enrich review-safe functional solution intent.
      * Interpret Print Requirement
      */
-    interpretPrintRequirement(requestParameters: InterpretPrintRequirementOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InterpretPrintRequirementResponse>;
+    interpretPrintRequirement(requestParameters: InterpretPrintRequirementOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InterpretationResultV02>;
 }

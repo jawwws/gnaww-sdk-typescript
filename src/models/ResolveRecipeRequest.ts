@@ -10,13 +10,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Gjs1 } from './Gjs1';
+import type { Gjs } from './Gjs';
 import {
-    Gjs1FromJSON,
-    Gjs1FromJSONTyped,
-    Gjs1ToJSON,
-    Gjs1ToJSONTyped,
-} from './Gjs1';
+    GjsFromJSON,
+    GjsFromJSONTyped,
+    GjsToJSON,
+    GjsToJSONTyped,
+} from './Gjs';
 
 /**
  * Resolve one exact canonical Gnaww Job Specification to a Recipe.
@@ -26,10 +26,10 @@ import {
 export interface ResolveRecipeRequest {
     /**
      *
-     * @type {Gjs1}
+     * @type {Gjs}
      * @memberof ResolveRecipeRequest
      */
-    gjs: Gjs1;
+    gjs: Gjs;
 }
 
 /**
@@ -50,7 +50,7 @@ export function ResolveRecipeRequestFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
 
-        'gjs': Gjs1FromJSON(json['gjs']),
+        'gjs': GjsFromJSON(json['gjs']),
     };
 }
 
@@ -65,6 +65,6 @@ export function ResolveRecipeRequestToJSONTyped(value?: ResolveRecipeRequest | n
 
     return {
 
-        'gjs': Gjs1ToJSON(value['gjs']),
+        'gjs': GjsToJSON(value['gjs']),
     };
 }

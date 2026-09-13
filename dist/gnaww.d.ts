@@ -1,5 +1,5 @@
 import { type FetchAPI } from "./runtime";
-import type { InterpretPrintRequirementResponse, MatchRecipeResponse, PrintJobSpecification, PrintJobSpecificationV04, PublicMatchTargetRequest, RecipeResource, ResolveRecipeResponse } from "./models";
+import type { InterpretationResultV02, MatchRecipeResponse, PrintJobSpecification, PrintJobSpecificationV04, PublicMatchTargetRequest, RecipeResource, ResolveRecipeResponse } from "./models";
 export interface GnawwClientOptions {
     apiKey: string;
     baseUrl?: string;
@@ -28,13 +28,19 @@ export interface CrunchOptions {
     quantity: number;
     target: PublicMatchTargetRequest;
 }
+export interface GnawwClarificationAnswer {
+    questionId: string;
+    value: string;
+}
 export type CanonicalGjs = PrintJobSpecification | PrintJobSpecificationV04;
 export declare class GnawwClient {
     private readonly interpretation;
     private readonly recipes;
     constructor(options: GnawwClientOptions);
-    consume(requirement: string): Promise<InterpretPrintRequirementResponse>;
-    consumeDetailed(requirement: string): Promise<GnawwResponse<InterpretPrintRequirementResponse>>;
+    consume(requirement: string): Promise<InterpretationResultV02>;
+    consumeDetailed(requirement: string): Promise<GnawwResponse<InterpretationResultV02>>;
+    continueRequirement(requirement: string, answers: GnawwClarificationAnswer[]): Promise<InterpretationResultV02>;
+    continueRequirementDetailed(requirement: string, answers: GnawwClarificationAnswer[]): Promise<GnawwResponse<InterpretationResultV02>>;
     getRecipe(recipeId: string): Promise<RecipeResource>;
     getRecipeDetailed(recipeId: string): Promise<GnawwResponse<RecipeResource>>;
     resolveRecipe(gjs: CanonicalGjs): Promise<ResolveRecipeResponse>;

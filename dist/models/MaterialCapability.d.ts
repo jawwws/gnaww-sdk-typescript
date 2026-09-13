@@ -6,7 +6,7 @@
  *
  *
  */
-import type { MaterialCompositionPart } from './MaterialCompositionPart';
+import type { AppModelsProducerMaterialCompositionPart } from './AppModelsProducerMaterialCompositionPart';
 /**
  * A canonical material or substrate capability.
  * @export
@@ -27,10 +27,10 @@ export interface MaterialCapability {
     certifications?: Array<string>;
     /**
      *
-     * @type {Array<MaterialCompositionPart>}
+     * @type {Array<AppModelsProducerMaterialCompositionPart>}
      * @memberof MaterialCapability
      */
-    composition?: Array<MaterialCompositionPart>;
+    composition?: Array<AppModelsProducerMaterialCompositionPart>;
     /**
      *
      * @type {string}

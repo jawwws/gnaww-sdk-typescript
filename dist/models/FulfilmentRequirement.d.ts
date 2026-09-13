@@ -25,7 +25,22 @@ export interface FulfilmentRequirement {
      * @memberof FulfilmentRequirement
      */
     maximumDeliveryWorkingDays?: number | null;
+    /**
+     *
+     * @type {FulfilmentRequirementServiceClassEnum}
+     * @memberof FulfilmentRequirement
+     */
+    serviceClass?: FulfilmentRequirementServiceClassEnum | null;
 }
+/**
+ * @export
+ */
+export declare const FulfilmentRequirementServiceClassEnum: {
+    readonly Standard: "standard";
+    readonly Express: "express";
+    readonly Freight: "freight";
+};
+export type FulfilmentRequirementServiceClassEnum = typeof FulfilmentRequirementServiceClassEnum[keyof typeof FulfilmentRequirementServiceClassEnum];
 /**
  * Check if a given object implements the FulfilmentRequirement interface.
  */

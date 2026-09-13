@@ -6,7 +6,7 @@
  *
  *
  */
-import type { Gjs1 } from './Gjs1';
+import type { Gjs } from './Gjs';
 /**
  * Resolve one exact canonical Gnaww Job Specification to a Recipe.
  * @export
@@ -15,10 +15,10 @@ import type { Gjs1 } from './Gjs1';
 export interface ResolveRecipeRequest {
     /**
      *
-     * @type {Gjs1}
+     * @type {Gjs}
      * @memberof ResolveRecipeRequest
      */
-    gjs: Gjs1;
+    gjs: Gjs;
 }
 /**
  * Check if a given object implements the ResolveRecipeRequest interface.
